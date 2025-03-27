@@ -18,6 +18,9 @@ RUN mkdir /var/run/sshd \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
+
+EXPOSE 22
+
 # Enable systemd
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/lib/systemd/systemd"]
