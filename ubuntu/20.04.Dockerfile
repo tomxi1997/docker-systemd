@@ -5,7 +5,9 @@ LABEL maintainer='Anton Melekhin'
 ENV container=docker \
     DEBIAN_FRONTEND=noninteractive
 
-RUN INSTALL_PKGS='findutils iproute2 python3 python3-apt sudo systemd' \
+RUN sed -i -e 's@//ports.ubuntu.com/\? @//ports.ubuntu.com/ubuntu-ports @g' \
+            -e 's@//ports.ubuntu.com@//mirrors.ustc.edu.cn@g' \
+            /etc/apt/sources.list && INSTALL_PKGS='findutils iproute2 python3 python3-apt sudo systemd' \
     && apt-get update && apt-get install $INSTALL_PKGS -y --no-install-recommends \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
