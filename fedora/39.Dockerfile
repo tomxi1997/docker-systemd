@@ -9,7 +9,7 @@ RUN sed -e 's|^metalink=|#metalink=|g' \
          -i.bak \
          /etc/yum.repos.d/fedora.repo \
          /etc/yum.repos.d/fedora-updates.repo && INSTALL_PKGS='findutils initscripts iproute python3 sudo' \
-    && dnf makecache && dnf install -y $INSTALL_PKGS \
+    && dnf update && dnf install -y $INSTALL_PKGS \
     && dnf clean all
 
 RUN find /etc/systemd/system \
