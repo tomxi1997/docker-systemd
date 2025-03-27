@@ -1,7 +1,11 @@
 
+主要是为docker core for Android 搞的
+https://github.com/tomxi1997/termux-packages/releases/tag/v7
+
+
 如何构建属于自己的docker systemd arm64镜像
 fork本仓库
-修改env.conf并提交，到action，点击启动工作流，等待完成，下载
+修改env.conf，并修改.github/workflow/并提交，到action，点击启动工作流，等待完成，下载
 
 
 如何使用呢
