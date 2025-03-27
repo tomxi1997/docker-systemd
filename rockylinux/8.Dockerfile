@@ -4,7 +4,13 @@ LABEL maintainer='Anton Melekhin'
 
 ENV container=docker
 
-RUN INSTALL_PKGS='findutils glibc-common initscripts iproute python3 sudo' \
+RUN sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/rocky|g' \
+    -i.bak \
+    /etc/yum.repos.d/Rocky-AppStream.repo \
+    /etc/yum.repos.d/Rocky-BaseOS.repo \
+    /etc/yum.repos.d/Rocky-Extras.repo \
+    /etc/yum.repos.d/Rocky-PowerTools.repo && INSTALL_PKGS='findutils glibc-common initscripts iproute python3 sudo' \
     && dnf makecache && dnf install -y $INSTALL_PKGS \
     && dnf clean all
 

@@ -4,7 +4,11 @@ LABEL maintainer='Anton Melekhin'
 
 ENV container=docker
 
-RUN INSTALL_PKGS='findutils initscripts iproute python3 sudo' \
+RUN sed -e 's|^metalink=|#metalink=|g' \
+         -e 's|^#baseurl=http://download.example/pub/fedora/linux|baseurl=https://mirrors.ustc.edu.cn/fedora|g' \
+         -i.bak \
+         /etc/yum.repos.d/fedora.repo \
+         /etc/yum.repos.d/fedora-updates.repo && INSTALL_PKGS='findutils initscripts iproute python3 sudo' \
     && dnf makecache && dnf install -y $INSTALL_PKGS \
     && dnf clean all
 
