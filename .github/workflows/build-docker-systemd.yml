@@ -49,8 +49,10 @@ jobs:
     - name: docker list and save docker img
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/docker-systemd
+        source ./env.conf
+        docker save -o docker-systemd-${DISTR}-${VERSION}.tar docker-systemd:${DISTR}-${VERSION}
         chmod +x save.sh
-        ./save.sh
+        #./save.sh
   
 
     - name: Upload docker img
