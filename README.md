@@ -1,3 +1,23 @@
+
+如何构建属于自己的docker systemd arm64镜像
+fork本仓库
+修改env.conf并提交，到action，点击启动工作流，等待完成，下载
+
+
+如何使用呢
+下载后解压artifact.zip
+docker load -i *.tar
+
+docker images
+然后查看镜像id
+
+然后运行
+docker run -d --name systemd-ubuntu --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro $id
+
+
+
+
+
 # Docker images with systemd support
 
 Docker containers that uses for Ansible role and playbook testing.
