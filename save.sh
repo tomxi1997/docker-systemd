@@ -15,7 +15,7 @@ get_image_id_by_repository() {
     
     if [ -n "$image_id" ]; then
         echo "The Docker image ID for repository '$repository_name' is: $image_id"   
-        docker save -o systemd-${DISTR}-${VERSION}.tar $image_id
+        docker save -o docker-systemd-${DISTR}-${VERSION}.tar $image_id
 	echo "Docker image save sucessfully"
     else
         echo "No Docker image found for repository '$repository_name'."
@@ -25,4 +25,4 @@ get_image_id_by_repository() {
 
 # Main script execution
 list_all_images
-get_image_id_by_repository "systemd-${DISTR}-${VERSION}"
+get_image_id_by_repository "docker-systemd"
