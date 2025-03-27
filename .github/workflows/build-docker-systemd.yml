@@ -31,7 +31,6 @@ jobs:
         echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "DEVICE=$(echo ${{ env.KERNEL_CONFIG }} | sed 's!vendor/!!;s/_defconfig//;s/_user//;s/-perf//')" >> $GITHUB_ENV
         sudo apt-get update
-        sudo apt install -y curl vim git gcc clang
         mkdir -p $GITHUB_WORKSPACE/kernel_workspace
 
   
@@ -41,7 +40,7 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/tomxi1997/docker-systemd.git
         cd docker-systemd
-        cat ./env.conf >> $GITHUB_ENV
+        source ./env.conf
         cat $GITHUB_ENV
         #docker buildx build -t builder -o type=docker .
         docker build -t docker-systemd:${DISTR}-${VERSION} -f ${DISTR}/${VERSION}.Dockerfile .
