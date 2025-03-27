@@ -56,6 +56,6 @@ jobs:
     - name: Upload docker img
       uses: actions/upload-artifact@v4
       with:
-        path: kernel_workspace/docker-systemd/docker-systemd:${DISTR}-${VERSION}.tar
+        path: kernel_workspace/docker-systemd/*.tar
 
   
