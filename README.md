@@ -6,12 +6,14 @@ fork本仓库
 
 如何使用呢
 下载后解压artifact.zip
+
 docker load -i *.tar
 
 docker images
 然后查看镜像id
 
 然后运行
+
 docker run -d --name systemd-ubuntu --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro $id
 
 
