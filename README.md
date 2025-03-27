@@ -14,8 +14,10 @@ docker images
 
 然后运行
 
-docker run -d --name systemd-ubuntu --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro $id
+docker run -d --net host --restart=always --name systemd-ubuntu --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro $id
 
+
+docker exec -ti systemd-ubuntu bash
 
 
 
