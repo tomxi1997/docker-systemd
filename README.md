@@ -1,5 +1,5 @@
 
-主要是为docker core for Android 搞的
+主要是为docker core for Android 搞的，加了国内源更适合国内使用
 https://github.com/tomxi1997/termux-packages/releases/tag/v7
 
 
