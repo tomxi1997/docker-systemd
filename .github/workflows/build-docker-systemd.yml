@@ -42,7 +42,7 @@ jobs:
         git clone https://github.com/tomxi1997/docker-systemd.git
         cd docker-systemd
         cat ./env.conf >> $GITHUB_ENV
-        cd docker-systemd
+        cat $GITHUB_ENV
         #docker buildx build -t builder -o type=docker .
         docker build -t docker-systemd:${DISTR}-${VERSION} -f ${DISTR}/${VERSION}.Dockerfile .
     
