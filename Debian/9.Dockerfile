@@ -4,8 +4,8 @@ FROM jrei/systemd-debian:9
 # Set environment variables
 ENV container docker
 
-# Install necessary packages，换源为ustc
-RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && apt-get update && apt-get install -y \
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
     openssh-server \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
