@@ -8,7 +8,6 @@ ENV container=docker \
 #换源安装systemd，openssh,创建ssh公钥私钥，给root用户修改密码为root，UseDNS no表示去掉远程ssh连接时的DNS域名解析
 RUN INSTALL_PKGS='findutils iproute2 python3 python3-apt sudo systemd openssh-server' \
     && apt-get update && apt-get install $INSTALL_PKGS -y --no-install-recommends \
-    && mkdir /var/run/sshd \
     && echo 'root:root' | chpasswd \
     && sed -i '/UseDNS/cUseDNS no' /etc/ssh/sshd_config \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
