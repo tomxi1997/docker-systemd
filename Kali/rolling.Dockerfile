@@ -6,8 +6,7 @@ ENV container=docker \
     DEBIAN_FRONTEND=noninteractive
 
 #换源安装systemd，openssh,创建ssh公钥私钥，给root用户修改密码为root，UseDNS no表示去掉远程ssh连接时的DNS域名解析
-RUN sed -i "s@http://http.kali.org/kali@https://mirrors.tuna.tsinghua.edu.cn/kali@g" /etc/apt/sources.list && INSTALL_PKGS='findutils iproute2 python3 python3-apt sudo systemd openssh-server' \
-    && apt-get install --reinstall ca-certificates && apt-get -o Acquire::https::Verify-Peer=false update \
+RUN INSTALL_PKGS='findutils iproute2 python3 python3-apt sudo systemd openssh-server' \
     && apt-get update && apt-get install $INSTALL_PKGS -y --no-install-recommends \
     && mkdir /var/run/sshd \
     && echo 'root:root' | chpasswd \
