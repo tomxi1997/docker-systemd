@@ -1,4 +1,4 @@
-FROM kali
+FROM kalilinux/kali-rolling
 
 LABEL maintainer='Anton Melekhin'
 
