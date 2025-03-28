@@ -5,7 +5,8 @@ FROM jrei/systemd-debian:9
 ENV container docker
 
 # Install necessary packages
-RUN apt-get update && apt-get install -y \
+RUN sed -i 's/http:\/\/deb.debian.org/http:\/\/archive.debian.org/g' /etc/apt/sources.list && \
+    sed -i 's/http:\/\/security.debian.org/http:\/\/archive.debian.org/g' /etc/apt/sources.list && apt-get update && apt-get install -y \
     openssh-server \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
