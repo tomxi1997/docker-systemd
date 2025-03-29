@@ -14,7 +14,7 @@ RUN INSTALL_PKGS='openrc openssh-server' \
     && sed -i '/UseDNS/cUseDNS no' /etc/ssh/sshd_config \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config \
-    && apk clean && rm -rf /tmp/* /var/tmp/*
+    && rm -rf /tmp/* /var/tmp/*
 
 #暴露22号端口
 EXPOSE 22
