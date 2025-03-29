@@ -8,7 +8,7 @@ ENV container=docker \
 #换源安装systemd，openssh,创建ssh公钥私钥，给root用户修改密码为root，UseDNS no表示去掉远程ssh连接时的DNS域名解析
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && INSTALL_PKGS='openrc openssh-server' \
     && apk update && apk add --no-cache $INSTALL_PKGS  \
-    && mkdir -p /var/run/sshd \
+    && mkdir -p /var/run/sshd /dev \
     && mkdir -p /run/openrc \
     && echo 'root:root' | chpasswd \
     && sed -i '/UseDNS/cUseDNS no' /etc/ssh/sshd_config \
