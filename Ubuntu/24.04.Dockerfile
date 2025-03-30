@@ -13,11 +13,12 @@ RUN sed -i 's@//ports.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list.
 # Create SSH directory and set up SSH
 RUN mkdir /var/run/sshd \
     && echo 'root:root' | chpasswd \
+    && sed -i 's/#Port 22/Port 2404/' /etc/ssh/sshd_config \
     && sed -i '/UseDNS/cUseDNS no' /etc/ssh/sshd_config \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
 
-EXPOSE 22
+EXPOSE 2404
 
 #

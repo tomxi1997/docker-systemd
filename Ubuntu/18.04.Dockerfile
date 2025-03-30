@@ -15,11 +15,12 @@ RUN sed -i -e 's@//ports.ubuntu.com/\? @//ports.ubuntu.com/ubuntu-ports @g' \
 # Create SSH directory and set up SSH，设置root用户密码为root，UseDNS no表示去掉远程ssh连接时的DNS域名解析
 RUN mkdir /var/run/sshd \
     && echo 'root:root' | chpasswd \
+    && sed -i 's/#Port 22/Port 1804/' /etc/ssh/sshd_config \
     && sed -i '/UseDNS/cUseDNS no' /etc/ssh/sshd_config \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
 #暴露22端口
-EXPOSE 22
+EXPOSE 1804
 
 
