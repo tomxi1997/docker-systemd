@@ -14,7 +14,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && apt
 RUN mkdir /var/run/sshd \
     && echo 'root:root' | chpasswd \
     && sed -i '/UseDNS/cUseDNS no' /etc/ssh/sshd_config \
-    && sed -i 's/Port 22/Port 8810/g' /etc/ssh/sshd_config \
+    && sed -i 's/#Port 22/Port 8810/' /etc/ssh/sshd_config \
     && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
