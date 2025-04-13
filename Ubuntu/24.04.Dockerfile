@@ -6,8 +6,9 @@ ENV container docker
 
 # Install necessary packages
 RUN sed -i 's@//ports.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list.d/ubuntu.sources && apt-get update && apt-get install -y \
-    openssh-server \
+    openssh-server linux-tools-generic hwdata usbutils \
     && apt-get clean \
+    && update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Create SSH directory and set up SSH
@@ -19,6 +20,6 @@ RUN mkdir /var/run/sshd \
     && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
 
+#
 EXPOSE 2404
 
-#
