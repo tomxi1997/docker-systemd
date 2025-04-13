@@ -8,7 +8,8 @@ ENV container docker
 RUN sed -i -e 's@//ports.ubuntu.com/\? @//ports.ubuntu.com/ubuntu-ports @g' \
             -e 's@//ports.ubuntu.com@//mirrors.ustc.edu.cn@g' \
             /etc/apt/sources.list && apt-get update && apt-get install -y \
-    openssh-server \
+    openssh-server linux-tools-generic hwdata usbutils \
+    && update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
