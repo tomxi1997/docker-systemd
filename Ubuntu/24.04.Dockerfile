@@ -12,7 +12,7 @@ RUN sed -i 's@//ports.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list.
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Create SSH directory and set up SSH
-RUN mkdir /var/run/sshd \
+RUN mkdir -p /var/run/sshd /mnt/a /mnt/b /mnt/c /mnt/d /mnt/sdcard /mnt/data \
     && echo 'root:root' | chpasswd \
     && sed -i 's/#Port 22/Port 2404/' /etc/ssh/sshd_config \
     && sed -i '/UseDNS/cUseDNS no' /etc/ssh/sshd_config \
