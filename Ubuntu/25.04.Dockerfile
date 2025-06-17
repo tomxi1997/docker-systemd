@@ -9,7 +9,7 @@ RUN sed -i 's@//ports.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list.
     openssh-server linux-tools-generic hwdata usbutils \
     && apt-get clean \
     && update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20 \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /etc/localtime
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /etc/localtime \
     && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # Create SSH directory and set up SSH
